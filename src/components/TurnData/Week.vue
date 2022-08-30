@@ -1,6 +1,6 @@
 <template>
   <div class="flex mb-4">
-    <div class="w-full min-w-full md:w-4/2 bg-grey p-4 text-center text-grey-lighter">{{ 'turns.turn.period' }}</div>
+    <div class="w-full min-w-full md:w-4/2 bg-grey p-4 text-center text-grey-lighter">{{ weekDate(title.period) }}</div>
   </div>
 </template>
 <script>
@@ -10,6 +10,7 @@ export default {
   name: 'Week',
   data () {
   },
+  props: ['title'],
   created () {
   },
   methods: {

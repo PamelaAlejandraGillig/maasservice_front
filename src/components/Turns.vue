@@ -1,8 +1,9 @@
 <template>
   <tbody class="flex flex-wrap">
+  <Week :title="turns[0]"></Week>
   <div v-for="turn in turns" :key="turn.day" class="max-w-md m-auto py-10">
     <div class="flex mb-2">
-      <div class="w-full bg-grey h-12 p-4 text-center text-grey-lighter">{{ getDay(turn.period, turn.day) }}</div>
+      <div class="w-full bg-grey h-12 p-4 text-center text-grey-lighter">{{ getDay(turns[0].period, turn.day) }}</div>
     </div>
     <div v-for="record in turn.record" :key="record.time" class="flex mb-1">
       <div class="w-full min-w-full md:w-3/4 bg-grey-light p-4 text-center text-grey-darker">
