@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import moment from 'moment'
 import Week from './Week.vue'
 export default {
@@ -54,7 +53,7 @@ export default {
     if (!this.$store.state.signedIn) {
       this.$router.replace('/')
     } else {
-      this.$http.secured.get('http://localhost:3000/api/v1/turns/shifts_available?id=' + this.$route.query.id)
+      this.$http.secured.get('/api/v1/turns/shifts_available?id=' + this.$route.query.id)
         .then(response => {
           this.turns = response.data.shift()
           this.turnsList = response.data
@@ -95,8 +94,7 @@ export default {
     },
     save () {
       let data = this.getCheched()
-      axios
-        .post('http://localhost:3000/api/v1/registrations/create_massive', data)
+      this.$http.secured.post('/api/v1/registrations/create_massive', data)
         .then(response => this.saveSuccessful(response))
         .catch(error => this.setError(error, 'Something went wrong'))
     },

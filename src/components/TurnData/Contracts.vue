@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   name: 'Turns',
   data () {
@@ -56,7 +55,7 @@ export default {
     if (!this.$store.state.signedIn) {
       this.$router.replace('/')
     } else {
-      this.$http.secured.get('http://localhost:3000/api/v1/companies')
+      this.$http.secured.get('/api/v1/companies')
         .then(response => {
           this.companies = response.data
         })
@@ -65,16 +64,14 @@ export default {
   },
   methods: {
     selectContracts () {
-      axios
-        .get('http://localhost:3000/api/v1/contracts?company_id=' + this.selectedCompany)
+      this.$http.secured.get('/api/v1/contracts?company_id=' + this.selectedCompany)
         .then(response => {
           this.contracts = response.data
         })
         .catch(error => this.setError(error, 'Something went wrong'))
     },
     selectTurns () {
-      axios
-        .get('http://localhost:3000/api/v1/turns/get_turns?id=' + this.selectedContract)
+      this.$http.secured.get('/api/v1/turns/get_turns?id=' + this.selectedContract)
         .then(response => {
           this.turns = response.data
         })

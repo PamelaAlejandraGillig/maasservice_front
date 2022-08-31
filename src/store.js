@@ -11,7 +11,7 @@ export const store = new Vuex.Store({
   getters: {
     currentUserId (state) {
       return state.currentUser && state.currentUser.id
-    },
+    }
   },
   mutations: {
     setCurrentUser (state, { currentUser, csrf }) {

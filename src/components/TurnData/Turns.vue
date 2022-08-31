@@ -42,7 +42,7 @@ export default {
       this.$router.replace('/')
     } else {
       this.turnId = this.$route.query.id
-      this.$http.secured.get('http://localhost:3000/api/v1/turns/shifts_available?id=' + this.turnId)
+      this.$http.secured.get('/api/v1/turns/shifts_available?id=' + this.turnId)
         .then(response => {
           this.turns = response.data.shift()
           this.turnsList = response.data
